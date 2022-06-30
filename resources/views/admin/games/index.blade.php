@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-
+@section('title', 'Games')
 @section('content')
 
 <div class="pcoded-main-container">
@@ -12,7 +12,10 @@
                             <div class="col-sm-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5>All Players</h5>
+                                        <h5>All Games</h5>
+                                        <div class="float-right">
+                                            <a class="btn  btn-primary text-white" href="{{ route('games.create') }}">Add New Game</a>
+                                        </div>
                                         </div>
                                     <div class="card-body">
                                         <div class="dt-responsive table-responsive">
@@ -20,39 +23,33 @@
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
+                                                        <th>Title</th>
                                                         <th>Image</th>
-                                                        <th>Name</th>
-                                                        <th>Game Name</th>
-                                                        <th>DOB</th>
-                                                        <th>City</th>
-                                                        <th>Age</th>
-                                                        <th>Address</th>
-                                                        <th>Action</th>
+                                                        <th>Description</th>
+                                                        <th>Actions</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($all_players as $all_player)
+                                                    @forelse ($games as $game)
                                                     <tr>
-
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>
-                                                            <img src="{{ asset($all_player->image) }}" width="40px"
-                                                             onerror="this.src='{{ asset('front/assets/images/profile_user.jpg') }}'">
-                                                        </td>
-                                                        <td>{{ $all_player->first_name. ' ' .$all_player->last_name  }}</td>
-                                                        <td>{{ $all_player->gaming_name }}</td>
-                                                        <td>{{ $all_player->dob }}</td>
-                                                        <td>{{ $all_player->city }}</td>
-                                                        <td>{{ $all_player->age }}</td>
-                                                        <td>{{ $all_player->address }}</td>
-                                                        <td>
-                                                            {{-- <a href="" class="btn btn-icon btn-outline-success"><i class="feather icon-check-circle"></i></a> --}}
-                                                            <button class="btn btn-icon btn-outline-danger delete" title="Delete"
-                                                                title="delete" data-id="{{ $all_player->id }}"><i class="feather icon-slash"></i></button>
+                                                        <td>{{ $game->title }}</td>
+                                                        <td><img src="{{ asset($game->image) }}" alt="" srcset="" width="50px" height="50px"></td>
+                                                        <td>{{ is_null($game->description) ? 'Null' : $game->description }}</td>
+                                                        <td class="d-inline-flex">
+                                                            <a type="button" class="btn btn-icon btn-outline-success" href="{{ route('games.edit',$game->id) }}"><i class="feather icon-edit"></i></a>
+                                                            <form action="{{ route('games.destroy',$game->id) }}" method="post">
+                                                                @csrf
+                                                                <input type="hidden" name="_method" value="DELETE">
+                                                                <button type="button" class="btn btn-icon btn-outline-danger"><i class="feather icon-trash"></i></button>
+                                                            </form>
                                                         </td>
                                                     </tr>
-                                                @endforeach
-
+                                                    @empty
+                                                    <tr>
+                                                        <td colspan="5" class="text-center">No Record Found</td>
+                                                    </tr>
+                                                    @endforelse
 
 
                                                 </tbody>

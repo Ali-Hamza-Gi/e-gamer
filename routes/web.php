@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\GameController;
 use App\Http\Controllers\GameNewsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -49,8 +50,15 @@ Route::middleware(['is_user'])->group(function (){
 });
 
 
- Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 
-//  players
-Route::get('/players', [AdminController::class, 'fetch_all_players'])->name('fetch.all.players');
-Route::get('/delete-players/{id}', [AdminController::class, 'delete_player'])->name('delete.player');
+Route::prefix('admin')->middleware(['is_admin'])->group(function () {
+    Route::get('dashboard', [HomeController::class, 'adminHome'])->name('admin.home');
+    //  players
+    Route::get('/players', [AdminController::class, 'fetch_all_players'])->name('fetch.all.players');
+    Route::get('/delete-players/{id}', [AdminController::class, 'delete_player'])->name('delete.player');
+    //  Brands
+    Route::get('/brands', [AdminController::class, 'fetch_all_brands'])->name('fetch.all.brands');
+    Route::get('/delete-brand/{id}', [AdminController::class, 'delete_brand'])->name('delete.brand');
+    // Games
+    Route::resource('games', GameController::class);
+});
