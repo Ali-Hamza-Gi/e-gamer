@@ -1,0 +1,95 @@
+.visible-xs{
+	display: none !important;
+}
+.hidden-xs{
+	display: block !important;
+}
+@media(max-width: 767px){
+	.visible-xs{
+		display: block !important;
+	}
+	.hidden-xs{
+		display: none !important;
+	}
+}
+@media(max-width: 1366px){
+	html{
+		font-size: 15px;
+	}
+}
+@media(max-width: 1280px){
+	html{
+		font-size: 14px;
+	}
+}
+@media(max-width: 1024px){
+	html{
+		font-size: 12px;
+	}
+	.game_select_section .game_select .img_box{
+		height: 400px;
+	}
+	.game_select_section .game_select .img_box h4{
+		font-size: 2rem;
+	}
+}
+@media(max-width: 992px){
+	html{
+		font-size: 10px;
+	}
+}
+@media(max-width: 767px){
+	html{
+		font-size: 12px;
+	}
+	.order{
+		order: initial;
+	}
+	.header .flexer h1{
+		font-size: 2rem;
+	}
+	.header .flexer h3{
+		font-size: 1.75rem;
+	}
+	.header .carousel-control-prev{
+		left: .75rem;
+	}
+	.header .carousel-control-next{
+		right: .75rem;
+	}
+	.header .flexer{
+		padding: 0 2.5rem;
+	}
+	.feature_section{
+		padding: 2.5rem 0;
+	}
+	.feature_section .img_box img{
+		margin-bottom: 2rem;
+	}
+	footer h5{
+		margin-top: 1.5rem;
+	}
+	.navbar-collapse{
+		background: #0c1220f0;
+		border-radius: 1rem;
+	}
+	.login_section .white_box p{
+		text-align: center;
+	}
+	.newsletter_section h4{
+	    text-align: center;
+	    margin-bottom: 1.5rem;
+	}
+	.feed_section .nav-tabs li{
+	    width: 100%;
+	}
+	.feed_section .nav-tabs li .nav-link{
+	    border: 1px solid #112545 !important;
+	    border-radius: 0.5rem !important;
+	}
+}
+@media(max-width: 480px){
+	html{
+		font-size: 11px;
+	}
+}	
