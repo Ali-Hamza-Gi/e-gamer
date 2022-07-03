@@ -1,7 +1,7 @@
 <nav class="pcoded-navbar">
     <div class="navbar-wrapper">
     <div class="navbar-brand header-logo">
-    <a href="index.html" class="b-brand">
+    <a href="{{ route('admin.home') }}" class="b-brand">
     <div class="b-bg">
     <i class="feather icon-trending-up"></i>
     </div>
@@ -26,6 +26,12 @@
     </li>
     <li class="{{ Request::segment(2) == 'videos' ? 'active' : ''}}">
         <a href="#"  class="nav-link "><span class="pcoded-micon"><i class="fa fa-video" aria-hidden="true"></i></span>Videos</a>
+    </li>
+    <li class="{{ Request::segment(2) == 'contact-us' ? 'active' : ''}}">
+        <a href="#"  class="nav-link "><span class="pcoded-micon"><i class="fa fa-id-badge" aria-hidden="true"></i></span>Contact Us</a>
+    </li>
+    <li class="{{ Request::segment(2) == 'newsletter-subscribers' ? 'active' : ''}}">
+        <a href="#"  class="nav-link "><span class="pcoded-micon"><i class="fa fa-newspaper" aria-hidden="true"></i> </span>Newsletter Subscribers</a>
     </li>
     </ul>
     </li>

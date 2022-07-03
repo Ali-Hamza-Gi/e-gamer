@@ -72,7 +72,7 @@ class GameController extends Controller
      */
     public function edit(Game $game)
     {
-        //
+        return view('admin.games.edit',compact('game'));
     }
 
     /**
@@ -95,6 +95,7 @@ class GameController extends Controller
      */
     public function destroy(Game $game)
     {
-        //
+        $game->delete();
+        return redirect()->route('games.index')->with('success','Game Deleted Sucessfully.');
     }
 }

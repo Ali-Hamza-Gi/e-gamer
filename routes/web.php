@@ -40,6 +40,7 @@ Route::get('about-us', [AboutUsController::class, 'about_us'])->name('user.about
 Route::get('top-players', [TopPlayersController::class, 'top_players'])->name('user.top.players');
 Route::get('gaming-news', [GameNewsController::class, 'gaming_news'])->name('user.gaming.news');
 Route::get('contact-us', [ContactUsController::class, 'contact_us'])->name('user.contact.us');
+Route::post('contact-us', [ContactUsController::class, 'contact_us_store'])->name('user.contact.us.store');
 Auth::routes();
 
 Route::middleware(['is_user'])->group(function (){

@@ -38,10 +38,10 @@
                                                         <td>{{ is_null($game->description) ? 'Null' : $game->description }}</td>
                                                         <td class="d-inline-flex">
                                                             <a type="button" class="btn btn-icon btn-outline-success" href="{{ route('games.edit',$game->id) }}"><i class="feather icon-edit"></i></a>
-                                                            <form action="{{ route('games.destroy',$game->id) }}" method="post">
+                                                            <a class="btn btn-icon btn-outline-danger" href="{{ route('games.destroy',$game->id) }}" onclick="event.preventDefault(); document.getElementById('delete-form').submit();"> <i class="fa fa-trash" aria-hidden="true"></i> </a>
+                                                            <form id="delete-form" action="{{ route('games.destroy',$game->id) }}" method="POST" class="d-none">
                                                                 @csrf
                                                                 <input type="hidden" name="_method" value="DELETE">
-                                                                <button type="button" class="btn btn-icon btn-outline-danger"><i class="feather icon-trash"></i></button>
                                                             </form>
                                                         </td>
                                                     </tr>

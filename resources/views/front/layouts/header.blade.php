@@ -54,7 +54,7 @@
                         <li class="nav-item">
                             <a class="nav-link {{ Request::segment(1) == 'contact-us' ? 'active' : ''}} " href="{{ route('user.contact.us') }}">Contact Us</a>
                         </li>
-                        @if (Auth::user() && Auth::user()->id)
+                        @if (Auth::user() && in_array(Auth::user()->user_type,['player','brand']))
                         <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">

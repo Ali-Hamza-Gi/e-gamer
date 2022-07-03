@@ -34,6 +34,9 @@
                 margin-left: 0 !important;
             }
         }
+        .fixed-button{
+            display: none !important;
+        }
     </style>
     @yield('style')
 </head>
